@@ -83,8 +83,6 @@ def get_transcript(link):
     return transcript.text
 
 def generate_blog_from_transcript(transcript):
-    # client = OpenAI()
-        # api_key="sk-proj-8gjwU7Tetg0fCQe2dXWbT3BlbkFJuPDdYYrvCUmlMzZlODwo")
     load_dotenv()
     client = OpenAI(
         api_key=os.getenv("OPENAI_API_KEY"),
