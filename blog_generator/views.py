@@ -85,7 +85,7 @@ def get_transcript(link):
 def generate_blog_from_transcript(transcript):
     load_dotenv()
     client = OpenAI(
-        api_key=os.getenv("OPENAI_API_KEY"),
+        api_key = os.getenv("OPENAI_API_KEY"),
         )
 
     prompt = f"Based on the following transcript from a YouTube video, write a comprehensive blog article, write it based on the transcript, but dont make it look like a youtube video, make it look like a proper blog article:\n\n{transcript}\n\nArticle:"
