@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 import assemblyai as aai
 from openai import OpenAI
 from .models import BlogPost
+import glob
 
 # Create your views here.
 @login_required
@@ -33,7 +34,8 @@ def generate_blog(request):
         title = yt_title(yt_link)
         
         # get transcript
-        transcript = get_transcript(yt_link)
+        audio_file = download_audio(yt_link)
+        transcript = get_transcript(audio_file)
         if not transcript:
             return JsonResponse({'error': " Failed to get transcript. "}, status=500)
 
@@ -51,6 +53,10 @@ def generate_blog(request):
         )
 
         new_blog_article.save()
+
+        # remove mp3 files from media directory
+        file_path = f"{settings.MEDIA_ROOT}/*"
+        remove_media_files(file_path)
 
         # return blog article as a response
         return JsonResponse({'content': blog_content})
@@ -72,8 +78,7 @@ def download_audio(link):
     os.rename(out_file, new_file)
     return new_file
 
-def get_transcript(link):
-    audio_file = download_audio(link)
+def get_transcript(audio_file):
     load_dotenv()
     aai.settings.api_key = os.getenv("AAI_API_KEY")
 
@@ -111,6 +116,11 @@ def blog_details(request, pk):
         return render(request, 'blog-details.html', {'blog_article_detail': blog_article_detail})
     else:
         return redirect('/')
+
+def remove_media_files(file_path):
+    files = glob.glob(file_path)
+    for f in files:
+        os.remove(f)
 
 def user_login(request):
     if request.method == 'POST':
