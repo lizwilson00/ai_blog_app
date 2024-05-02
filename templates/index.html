@@ -1,10 +1,18 @@
+<!-- {% load static tailwind_tags %} -->
+{% load compress %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Blog Generator</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- {% tailwind_css %} -->
+    {% compress css %}
+    <link rel="stylesheet"
+        href="{% static 'src/output.css' %}">
+    {% endcompress %}
 
     <style>
         @keyframes rotate {
@@ -103,7 +111,7 @@
     </div>
 
     <footer class="text-center p-4 text-black mt-6">
-        Original code by <a href="https://www.youtube.com/@CodeWithTomi">Code With Tomi</a>
+        Original code by <a href="https://www.youtube.com/@CodeWithTomi">Code With Tomi</a>, modified by <a href="https://lizwilson00.github.io/">Liz Wilson</a>
     </footer>
 
     <script>
