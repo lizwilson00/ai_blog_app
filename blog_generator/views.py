@@ -80,7 +80,10 @@ def download_audio(link):
 
 def get_transcript(audio_file):
     load_dotenv()
-    aai.settings.api_key = os.getenv("AAI_API_KEY")
+    # aai.settings.api_key = os.getenv("AAI_API_KEY")
+    
+    # production
+    aai.settings.api_key = os.environ.get("AAI_API_KEY")
 
     transcriber = aai.Transcriber()
     transcript = transcriber.transcribe(audio_file)
@@ -89,8 +92,13 @@ def get_transcript(audio_file):
 
 def generate_blog_from_transcript(transcript):
     load_dotenv()
+    # client = OpenAI(
+    #     api_key = os.getenv("OPENAI_API_KEY"),
+    #     )
+    
+    # production
     client = OpenAI(
-        api_key = os.getenv("OPENAI_API_KEY"),
+        api_key = os.environ.get("OPENAI_API_KEY"),
         )
 
     prompt = f"Based on the following transcript from a YouTube video, write a comprehensive blog article, write it based on the transcript, but dont make it look like a youtube video, make it look like a proper blog article:\n\n{transcript}\n\nArticle:"
