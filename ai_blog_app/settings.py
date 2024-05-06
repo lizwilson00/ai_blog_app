@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog_generator',
-    'tailwind',
     'compressor',
 ]
 
@@ -148,9 +147,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'login'
 
-# INTERNAL_IPS = [
-#     "127.0.0.1",
-# ]
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 COMPRESS_ROOT = BASE_DIR / 'static'
  

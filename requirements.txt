@@ -14,7 +14,6 @@ distro==1.9.0
 dj-database-url==2.1.0
 Django==5.0.4
 django-appconf==1.0.6
-django-browser-reload==1.12.1
 django-compressor==4.4
 django-tailwind==3.8.0
 exceptiongroup==1.2.1

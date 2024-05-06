@@ -1,4 +1,3 @@
-<!-- {% load static tailwind_tags %} -->
 {% load compress %}
 {% load static %}
 
@@ -8,11 +7,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Blog Posts</title>
-    <!-- {% tailwind_css %} -->
     {% compress css %}
     <link rel="stylesheet"
         href="{% static 'src/output.css' %}">
     {% endcompress %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon_io/site.webmanifest' %}">
 </head>
 <body class="bg-gray-100 font-sans antialiased">
     
@@ -37,13 +40,13 @@
                 <div class="space-y-4">
                     
                     {% for article in blog_articles reversed %}
-                    <a href="blog-details/{{article.id}}">
-                            <div class="border border-gray-300 p-4 rounded-lg">
-                            <h3 class="text-lg font-semibold">{{article.youtube_title}}</h3>
-                            <p>{{article.generated_content|truncatechars:80}}</p>
-                        </div>
-                    </a>
-                        {% endfor %}
+                        <a href="blog-details/{{article.id}}">
+                                <div class="border border-gray-300 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold">{{article.youtube_title}}</h3>
+                                <p>{{article.generated_content|truncatechars:80}}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
                     <!-- Repeat -->
                 </div>
             </section>
