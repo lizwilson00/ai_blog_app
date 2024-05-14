@@ -27,7 +27,7 @@ load_dotenv()
 # SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # production
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
