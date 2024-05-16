@@ -178,12 +178,6 @@ LOGGING = {
         },
     },
     'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': f"{BASE_DIR}/logs/ai_blog_app.log",
-            'formatter': 'verbose'
-        },
         'console_handler': {
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
