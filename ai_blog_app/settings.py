@@ -189,8 +189,8 @@ LOGGING = {
             'propagate': True,
             'level':'ERROR',
         },
-        'django_tailwind_app': {
-            'handlers': ['console_handler', 'file'],
+        'ai_blog_app': {
+            'handlers': ['console_handler'],
             'level': 'ERROR',
         },
     }
